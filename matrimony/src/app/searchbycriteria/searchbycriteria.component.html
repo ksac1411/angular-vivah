@@ -1,0 +1,426 @@
+<div class="container mt-5">
+  <h3 class="text-center">Search By Criteria</h3>
+      <form (ngSubmit)="search()" #profileForm="ngForm">
+          <fieldset *ngIf="currentStep === 1">
+
+      <div class="mb-3">
+          <label for="religion" class="form-label">Religion:</label>
+          <select id="religion" name="religion" class="form-control" [(ngModel)]="user.religion" required>
+            <option value="">- Select Religion -</option>
+            <option value="Hinduism">Hinduism</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Islam">Islam</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="Sikhism">Sikhism</option>
+            <option value="Judaism">Judaism</option>
+            <option value="Bahá'í Faith">Bahá'í Faith</option>
+            <option value="Atheist">Atheist</option>
+            <option value="Agnostic">Agnostic</option>
+            <option value="Jainism">Jainism</option>
+            <option value="Zoroastrianism">Zoroastrianism</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+       
+      <div class="mb-3">
+          <label for="mother_tongue" class="form-label">Mother Tongue:</label>
+          <select id="mother_tongue" name="mother_tongue" class="form-control" [(ngModel)]="user.mother_tongue" required>
+            <option value="">- Select Mother Tongue -</option>
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Gujarati">Gujarati</option>
+            <option value="Punjabi">Punjabi</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Odia">Odia</option>
+            <option value="Assamese">Assamese</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Sindhi">Sindhi</option>
+            <option value="Nepali">Nepali</option>
+            <option value="Konkani">Konkani</option>
+            <option value="Sanskrit">Sanskrit</option>
+            <option value="Tulu">Tulu</option>
+            <option value="Maithili">Maithili</option>
+            <option value="Other">Other</option>
+            <!-- Add more mother tongue options as needed -->
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="age" class="form-label">Age:</label>
+          <select class="form-select" id="ageMax" name="age" [(ngModel)]="user.ageMax">
+            <option value="" disabled selected>Select an age</option>
+            <option *ngFor="let age of ageOptions" [value]="age">{{ age }}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Height:</label>
+          <div class="d-flex">
+            <select id="minHeight" name="minHeight" class="form-control" [(ngModel)]="user.heightMin" placeholder= "min-height" required>
+              <option value="" disabled selected>- Min Height -</option>
+              <option *ngFor="let height of heightOptions" [value]="height">{{ height }}</option>
+            </select>
+            <select id="maxHeight" name="maxHeight" class="form-control" [(ngModel)]="user.heightMax" required>
+              <option value="" disabled selected>- Max Height -</option>
+              <option *ngFor="let height of heightOptions" [value]="height">{{ height }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="marital_status" class="form-label">Marital Status:</label>
+          <select id="marital_status" name="marital_status" class="form-control" [(ngModel)]="user.marital_status" required>
+            <option value="">- Select -</option>
+            <option value="single">Single</option>
+            <option value="divorced">Divorced</option>]
+            <option value="widowed">Widowed</option>
+          </select>
+        </div>
+
+      <button type="button" class="btn btn-primary" (click)="nextStep()">Continue</button>
+
+    </fieldset>
+
+      <fieldset *ngIf="currentStep === 2">
+
+      <div class="mb-3">
+          <label for="country" class="form-label">Country:</label>
+          <select id="country" name="country" class="form-control" [(ngModel)]="user.country" required>
+            <option value="">- Select Country -</option>
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Spain">Spain</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Argentina">Argentina</option>
+            <option value="South Africa">South Africa</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Other">Other</option>
+            <!-- Add more country options as needed -->
+          </select>
+        </div>
+        
+      
+        <div class="mb-3">
+          <label for="state" class="form-label">State:</label>
+          <input type="text" class="form-control" id="state" name="state" [(ngModel)]="user.state" required>
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">City:</label>
+          <input type="text" class="form-control" id="city" name="phone" [(ngModel)]="user.city" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="residential_status" class="form-label">Residential Status:</label>
+          <select id="residential_status" name="residential_status" class="form-control" [(ngModel)]="user.residential_status" required>
+            <option value="">- Select -</option>
+            <option value="own">Own House</option>
+            <option value="rent">Rent</option>
+          </select>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="manglik_status" name="manglik_status" value="manglik" [(ngModel)]="user.manglik_status">
+            <label class="form-check-label" for="manglik_status">Manglik Status</label>
+          </div>
+
+      <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary" (click)="prevStep()">Previous</button>
+          <button type="button" class="btn btn-primary" (click)="nextStep()">Continue</button>
+        </div>
+      </fieldset>
+  
+
+      <fieldset *ngIf="currentStep === 3">
+
+
+      
+          <div class="mb-3">
+            <label for="horoscope" class="form-label">Horoscope:</label>
+            <select id="horoscope" name="horoscope" class="form-control" [(ngModel)]="user.horoscope">
+              <option value="">- Select -</option>
+              <option value="Aries">Aries</option>
+              <option value="Taurus">Taurus</option>
+              <option value="Gemini">Gemini</option>
+              <option value="Cancer">Cancer</option>
+              <option value="Leo">Leo</option>
+              <option value="Virgo">Virgo</option>
+              <option value="Libra">Libra</option>
+              <option value="Scorpio">Scorpio</option>
+              <option value="Sagittarius">Sagittarius</option>
+              <option value="Capricorn">Capricorn</option>
+              <option value="Aquarius">Aquarius</option>
+              <option value="Pisces">Pisces</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="healthIssues" class="form-label">Health Issues:</label>
+            <select class="form-select" id="healthIssues" name="healthIssues" [(ngModel)]="user.healthIssues" required>
+              <option value="">- Select Health Issues -</option>
+              <option value="No Health Issues">No Health Issues</option>
+              <option value="Minor Health Issues">Minor Health Issues</option>
+              <option value="Serious Health Issues">Serious Health Issues</option>
+              <option value="Pre-existing Condition">Pre-existing Condition</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+       <div class="mb-3">
+            <label for="hobbies" class="form-label">Hobbies:</label>
+            <input type="text" class="form-control" id="hobbies" name="hobbies" [(ngModel)]="user.hobbies" placeholder="E.g., Reading, Traveling, Cooking" required>
+          </div>
+          <div class="mb-3">
+            <label for="eyeSight" class="form-label">Eye Sight Requirement:</label>
+            <select class="form-select" id="eyesightRequirement" name="eyeSight" [(ngModel)]="user.eyesightRequirement">
+              <option value="">- Select Eye Sight Requirement -</option>
+              <option value="No Glasses">No Glasses</option>
+              <option value="Reading Glasses">Reading Glasses</option>
+              <option value="Prescription Glasses">Prescription Glasses</option>
+              <option value="Contact Lenses">Contact Lenses</option>
+              <option value="LASIK Surgery">LASIK Surgery</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="education" class="form-label">Education:</label>
+            <select id="education" name="education" class="form-control" [(ngModel)]="user.education" placeholder="highest education">
+              <option value="">- Select Education -</option>
+              <option value="High School">High School</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Master's Degree">Master's Degree</option>
+              <option value="Doctorate">Doctorate</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Other">Other</option>
+              <!-- Add more education options as needed -->
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" (click)="prevStep()">Previous</button>
+              <button type="button" class="btn btn-primary" (click)="nextStep()">Continue</button>
+            </div>
+            
+            
+          </fieldset>
+
+<fieldset *ngIf="currentStep === 4">
+
+     
+      
+        <div class="mb-3">
+          <label for="occupation" class="form-label">Occupation:</label>
+          <select id="occupation" name="occupation" class="form-control" [(ngModel)]="user.occupation" required>
+            <option value="">- Select Occupation -</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Private Sector">Private Sector</option>
+            <option value="Government Sector">Government Sector</option>
+            <option value="Business">Business</option>
+            <option value="Other">Other</option>
+            <!-- Add more occupation options as needed -->
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="employedIn" class="form-label">Employed In:</label>
+          <select class="form-select" id="employedIn" name="employedIn" [(ngModel)]="user.employedIn" required>
+            <option value="">- Select Employed In -</option>
+            <option value="Private Sector">Private Sector</option>
+            <option value="Government Sector">Government Sector</option>
+            <option value="Business">Business</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Other">Other</option>
+
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        
+        <div class="mb-3">
+          <label for="income" class="form-label">Income:</label>
+          <select id="income" name="income" class="form-control" [(ngModel)]="user.income" required>
+            <option value="">- Select Income -</option>
+            <option value="Less than 25000">Less than 25000</option>
+            <option value="Less than 50000">Less than 50000</option>
+            <option value="Less than 1 Lakh">Less than 1 Lakh</option>
+            <option value="1 Lakh - 5 Lakhs">1 Lakh - 5 Lakhs</option>
+            <option value="5 Lakhs - 10 Lakhs">5 Lakhs - 10 Lakhs</option>
+            <option value="10 Lakhs - 20 Lakhs">10 Lakhs - 20 Lakhs</option>
+            <option value="20 Lakhs - 50 Lakhs">20 Lakhs - 50 Lakhs</option>
+            <option value="50 Lakhs - 1 Crore">50 Lakhs - 1 Crore</option>
+            <option value="More than 1 Crore">More than 1 Crore</option>
+            <!-- Add more income options as needed -->
+          </select>
+      </div>
+      <div class="mb-3">
+        <label for="settlingAbroad" class="form-label">Interested in Settling Abroad:</label>
+        <select class="form-select" id="settlingAbroad" name="settlingAbroad" [(ngModel)]="user.settlingAbroad" required>
+          <option value="">- Select Option -</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Undecided">Undecided</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="transferLocation" class="form-label">Transfer Location:</label>
+        <select class="form-select" id="transferLocation" name="transferLocation" [(ngModel)]="user.transferLocation" required>
+          <option value="">- Select Option -</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Maybe">Maybe</option>
+        </select>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" (click)="prevStep()">Previous</button>
+        <button type="button" class="btn btn-primary" (click)="nextStep()">Continue</button>
+      </div>
+  </fieldset>
+
+  <fieldset *ngIf="currentStep === 5">
+
+      <div class="mb-3">
+        <label for="preferredCity" class="form-label">Preferred City:</label>
+        <select class="form-select" id="preferredCity" name="preferredCity" [(ngModel)]="user.preferredCity" required>
+          <option value="">- Select City -</option>
+          <option value="New York">New York</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="Chicago">Chicago</option>
+          <option value="San Francisco">San Francisco</option>
+          <!-- Add more city options as needed -->
+        </select>
+      </div>
+      
+  
+      <div class="mb-3">
+        <label for="drink" class="form-label">Drink:</label>
+        <select id="drink" name="drink" class="form-control" [(ngModel)]="user.drink" required>
+          <option value="">- Select -</option>
+          <option value="non-drinker">Non-drinker</option>
+          <option value="occasionally">Occasionally</option>
+          <option value="regularly">Regularly</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="diet" class="form-label">Diet:</label>
+        <select id="diet" name="diet" class="form-control" [(ngModel)]="user.diet" required>
+          <option value="">- Select -</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="non-vegetarian">Non-vegetarian</option>
+          <option value="vegan">Vegan</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="smoke" class="form-label">Smoke:</label>
+        <select id="smoke" name="smoke" class="form-control" [(ngModel)]="user.smoke" required>
+          <option value="">- Select -</option>
+          <option value="non-smoker">Non-smoker</option>
+          <option value="occasionally">Occasionally</option>
+          <option value="regularly">Regularly</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="bodyType" class="form-label">Body Type:</label>
+        <select class="form-select" id="bodyType" name="bodyType" [(ngModel)]="user.bodyType">
+          <option value="">- Select Body Type -</option>
+          <option value="Slim">Slim</option>
+          <option value="Average">Average</option>
+          <option value="Athletic">Athletic</option>
+          <option value="Curvy">Curvy</option>
+          <option value="Heavyset">Heavyset</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="faceCut" class="form-label">Face Cut:</label>
+        <select class="form-select" id="faceCut" name="faceCut" [(ngModel)]="user.faceCut">
+          <option value="">- Select Face Cut -</option>
+          <option value="Oval">Oval</option>
+          <option value="Round">Round</option>
+          <option value="Square">Square</option>
+          <option value="Heart-Shaped">Heart-Shaped</option>
+          <option value="Diamond">Diamond</option>
+        </select>
+      </div>
+      
+      <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary" (click)="prevStep()">Previous</button>
+          <!-- <button type="submit" class="btn btn-primary">update</button> -->
+          <button type="button" class="btn btn-primary" (click)="nextStep()">Continue</button>
+
+        </div>
+        
+    </fieldset>
+    <fieldset *ngIf="currentStep === 6">
+
+  <div class="mb-3">
+    <label for="familyBasedOut" class="form-label">Family Based Out:</label>
+    <select class="form-select" id="familyBasedOut" [(ngModel)]="user.familyBasedOut" name="familyBasedOut">
+      <option value="">Any</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="familyType" class="form-label">Family Type:</label>
+    <select class="form-select" id="familyType" [(ngModel)]="user.familyType" name="familyType">
+      <option value="">Any</option>
+      <option value="Nuclear">Nuclear Family</option>
+      <option value="Joint">Joint Family</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="familySize" class="form-label">Family Size:</label>
+    <input type="number" class="form-control" id="familySize" [(ngModel)]="user.familySize" name="familySize">
+  </div>
+
+ 
+
+  <div class="mb-3">
+    <label for="caste" class="form-label">Caste:</label>
+    <select class="form-select" id="caste" name="caste" [(ngModel)]="user.caste" required>
+      <option value="">- Select Caste -</option>
+      <option value="Caste Option 1">Caste Option 1</option>
+      <option value="Caste Option 2">Caste Option 2</option>
+      <option value="Caste Option 3">Caste Option 3</option>
+      <!-- Add more caste options as needed -->
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="subCaste" class="form-label">Sub-Caste:</label>
+    <select class="form-select" id="subCaste" name="subCaste" [(ngModel)]="user.subCaste">
+      <option value="">- Select Sub-Caste -</option>
+      <option value="Sub-Caste Option 1">Sub-Caste Option 1</option>
+      <option value="Sub-Caste Option 2">Sub-Caste Option 2</option>
+      <option value="Sub-Caste Option 3">Sub-Caste Option 3</option>
+      <!-- Add more sub-caste options as needed -->
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="casteNoBar" name="casteNoBar" [(ngModel)]="user.casteNoBar">
+      <label class="form-check-label" for="casteNoBar">Caste No Bar</label>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary" (click)="prevStep()">Previous</button>
+
+    <button type="submit" class="btn btn-success">Search</button>
+
+
+  </div>
+</fieldset>
+</form>
+</div>

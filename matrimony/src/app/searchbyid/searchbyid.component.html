@@ -1,0 +1,55 @@
+<!-- <div class="container mt-5">
+  <h1 class="text-center">Search Matrimony Profiles</h1>
+  
+  <form #searchForm="ngForm" (ngSubmit)="searchById()">
+    <div class="mb-3">
+      <label for="searchId" class="form-label"></label>
+      <input
+            type="text"
+            class="form-control"
+            placeholder="Enter ID"
+            name="searchId"
+            [(ngModel)]="searchId"
+            required
+          />
+       
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div> -->
+
+<div>
+  <label for="userId">Enter User ID:</label>
+  <input type="number" id="userId" [(ngModel)]="userId" />
+  <button (click)="fetchUser()">Search</button>
+
+</div>
+<div class="container mt-5">
+
+  <div class="card" *ngIf="user">
+
+    <div class="card-body">
+      <h5 class="card-title">User Profiles</h5>
+      <img src="{{ user.profilePhotoUrl }}" alt="User Profile Photo" class="card-img-top">
+
+      <p class="card-text"><strong>ID:</strong> {{ user.id }}</p>
+      <p class="card-text"><strong>Name:</strong> {{ user.name }}</p>
+      <p class="card-text"><strong>Occupation:</strong> {{ user.occupation }}</p>
+      <p class="card-text"><strong>State:</strong> {{ user.state }}</p>
+      <!-- Add other user details as needed -->
+    </div>
+  </div>
+</div>
+
+
+<!-- <div *ngIf="user">
+  <h2>User Details</h2>
+  <p>ID: {{ user.id }}</p>
+  <p>Name: {{ user.name }}</p>
+  <p>Name: {{ user.occupation }}</p>
+  <p>Name: {{ user.state}}</p>
+   -->
+
+
+  <!-- Add other user details as needed -->
+

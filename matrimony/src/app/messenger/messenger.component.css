@@ -1,0 +1,54 @@
+/* Basic styling for the messenger component */
+.messenger-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chat-list {
+  flex: 1;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-item img {
+  max-width: 40px;
+  margin-right: 10px;
+}
+
+.chat-details {
+  flex: 1;
+}
+
+.chat-window {
+  flex: 2;
+  background-color:black;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message-sender {
+  font-weight: bold;
+}
+
+/* Add more styling as needed */
+/* messenger.component.css */
+
+/* Style for chat list avatar images */
+.list-group-item img {
+  max-width: 30px; /* Adjust the maximum width as needed */
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 10px; /* Add some spacing between the image and text */
+}

@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <!-- <h1>Welcome to the Matrimony Site Help Center</h1> -->
+  
+    <div class="help" *ngFor="let article of helpArticles">
+      <h2>{{ article.title }}</h2>
+      <Br>
+      <p *ngFor="let faq of article.faqs">
+  
+        <strong (click)="toggleAnswer(faq)">{{ faq.question }}</strong>
+        <br>
+        <br>
+        <span class="answer" *ngIf="faq.showAnswer">{{ faq.answer }}</span>
+      </p>
+    </div>
+  </div>
+  
+  

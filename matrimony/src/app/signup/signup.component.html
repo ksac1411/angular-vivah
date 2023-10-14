@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body card-body-with-bg">
+      <h3 class="card-title text-center">Sign Up</h3>
+      <ng-container *ngIf="!showOTPForm">
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="profileType" class="form-label">Create Profile For</label>
+          <select class="form-select" id="profileType" [(ngModel)]="logindata.profileType" name="profileType" required>
+            <option value="" disabled>Select Profile For</option>
+            <option value="bride">Bride</option>
+            <option value="groom">Groom</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter your name or email" [(ngModel)]="logindata.username" name="username" autocomplete>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" [(ngModel)]="logindata.email" name="email" autocomplete>
+        </div>
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your mobile number" [(ngModel)]="logindata.phoneNumber" name="mobile" autocomplete>
+        </div>
+        <div class="mb-3">
+          <label for="Password" class="form-label">Create Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="Password" placeholder="Enter new password" [(ngModel)]="logindata.password" name="Password" autocomplete="current-password">
+            <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" [(ngModel)]="logindata.confirmPassword" name="confirmPassword" autocomplete>
+            <button class="btn btn-outline-secondary" type="button" (click)="toggleConfirmPassword()">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" title="Click to Sign Up">Sign Up</button>
+
+        <!-- <button type="submit" class="btn btn-primary btn-block">Sign Up</button> -->
+        <!-- <a routerLink="/Otp" class="btn btn-primary btn-block">Sign Up</a> -->
+
+      </form>
+    </ng-container>
+<!-- OTP verification form -->
+<ng-container *ngIf="showOTPForm">
+  <h3 class="card-title text-center">Enter OTP</h3>
+  <p class="text-center">A one-time password has been sent to your email/mobile.</p>
+  <form (ngSubmit)="onOtpSubmit()">
+    <!-- Input field for OTP -->
+    <div class="mb-3">
+      <label for="otp" class="form-label">OTP</label>
+      <input type="text" class="form-control" id="otp" placeholder="Enter OTP" [(ngModel)]="otp.otp" name="otp">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  </form>
+</ng-container>
+    </div>
+  </div>
+</div>

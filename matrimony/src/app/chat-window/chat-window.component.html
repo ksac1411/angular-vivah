@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-4">
+        <div class="card">
+          <div class="card-header">
+            Chat Window
+          </div>
+          <div class="card-body message-container">
+            <div class="media" *ngFor="let message of messages">
+              <img src="assets\women avtar.webp" class="mr-3 rounded-circle" alt="User Avatar" style="max-width: 50px;">
+              <div class="media-body">
+                <h5 class="mt-0">{{ message.sender }}</h5>
+                <p>{{ message.content }}</p>
+                <small>{{ message.timestamp | date: 'MMM dd, yyyy HH:mm' }}</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer message-input">
+            <div class="input-group">
+              <input type="text" class="form-control" [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type your message...">
+              <div class="input-group-append">
+                <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

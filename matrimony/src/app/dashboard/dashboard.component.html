@@ -1,0 +1,122 @@
+
+<app-dashboardheader></app-dashboardheader>
+
+<nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/edit-profile" routerLinkActive="active" (click)="navigateToeditProfilePage">
+            <i class="fas fa-user"></i> Edit Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/search" routerLinkActive="active">
+            <i class="fas fa-search"></i> Search
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sort-by" routerLinkActive="active">
+            <i class="fas fa-sort"></i> Sort By
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/filters" routerLinkActive="active">
+            <i class="fas fa-filter"></i> Filter
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Phonebook" routerLinkActive="active">
+            <i class="fas fa-phone"></i> Phonebook 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/subscription" routerLinkActive="active">
+            <i class="fas fa-dollar-sign"></i> Subscription
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/help" routerLinkActive="active">
+            <i class="fas fa-question-circle"></i> Help
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Feedback" routerLinkActive="active">
+            <i class="fas fa-comment"></i> Feedback
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- profile-page.component.html -->
+
+<div class="container mt-5">
+
+  <div class="card">
+
+    <div class="card-body">
+
+      <h2 class="card-title">User Profile</h2>
+
+      <div *ngIf="userData">
+
+        <p class="card-text"><strong>Name:</strong> {{ userData.name }}</p>
+
+        <p class="card-text"><strong>Email:</strong> {{ userData.email }}</p>
+
+        <!-- <p class="card-text"><strong>Photo:</strong></p>
+
+        <img [src]="userData.profilePhoto" alt="User Photo" width="400" height="400">
+
+         -->
+
+        <p class="card-text"><strong>City:</strong> {{ userData.city }}</p>
+
+        <p class="card-text"><strong>Username:</strong> {{ userData.username }}</p>
+
+        <p class="card-text"><strong>ID:</strong> {{ userData.id }}</p>
+
+        <!-- Add more properties as needed -->
+
+      
+<!-- 
+        <button type="button" (click)="deleteUser()">Delete</button>
+
+        <p>{{ deletionMessage }}</p> 
+ -->
+
+      </div>
+
+      <div *ngIf="!userData" class="text-center">
+
+        <p class="card-text">Loading user data...</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<app-dashboardfooter></app-dashboardfooter>

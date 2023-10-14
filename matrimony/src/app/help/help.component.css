@@ -1,0 +1,70 @@
+* Global styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+  
+  .container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: x-large;
+  }
+  
+  .help-article {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .help-article h2 {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: x-large;
+  }
+  
+  .help-article p {
+    color: #777;
+  }
+  
+  .help-article strong {
+    color: #333;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+    
+    .help-article {
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .help-article h2 {
+      font-size: 18px;
+    }
+    
+    .help-article p {
+      font-size: 14px;
+    }
+  }

@@ -1,0 +1,56 @@
+.chat-window {
+    background-color:pink;
+    padding: 20px;
+    border: 5px solid black;
+    border-radius: 5px;
+    box-sizing: border-box; 
+
+}
+  /* chat-window.component.css */
+
+.message-container {
+  overflow-y: scroll; /* Add vertical scrolling if needed */
+}
+
+.message {
+  background-color: #e2e2e2; /* Set your desired background color */
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+} */
+/* chat-window.component.css */
+
+/* Style the message container */
+.message-container {
+    max-height: 400px; /* Set a maximum height for the message container */
+    overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+  }
+  
+  /* Style individual messages */
+  .message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Style user messages */
+  .message.sent {
+    background-color: #007bff; /* Blue background for user messages */
+    color: #fff; /* White text for user messages */
+    float: right;
+  }
+  
+  /* Style received messages */
+  .message.received {
+    background-color: #f1f1f1; /* Light gray background for received messages */
+    color: #333; /* Dark text for received messages */
+    float: left;
+  }
+  
+  /* Clear floats for new rows of messages */
+  .message::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  

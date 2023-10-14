@@ -1,0 +1,31 @@
+.navbar {
+    background-color:whitesmoke; 
+}
+
+.navbar-toggler-icon {
+    color: #fff; /* Color of the navbar toggle icon */
+}
+
+/* Style the navigation links */
+.navbar-nav {
+    margin-left: auto; 
+    /* Push the links to the right */
+}
+
+.navbar-nav .nav-link {
+    color: darkblue; /* Color of the links */
+    margin-right: 15px; /* Adjust the spacing between links */
+    font-weight: bold;
+    font-size: larger; /* Specify the font size in pixels */
+}
+
+/* Style the active link */
+.navbar-nav .nav-link.active {
+    color: #ffc107; /* Color of the active link */
+}
+
+/* Hover effect for the links */
+.navbar-nav .nav-link:hover {
+    color:darkred; /* Color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}

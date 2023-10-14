@@ -1,0 +1,90 @@
+  
+    <p class="mt-4 display-4">OUR SUBSCRIPTION SERVICES</p>
+
+    <div *ngIf="showAll" class="row">
+    
+      <!-- Basic Plan -->
+      <div class="col-md-4 data">
+        <div class="subscription-plan">
+          <h2>Basic Plan</h2>
+          <!-- <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+          <ul>
+            <li>Feature 1</li>
+            <li>Feature 2</li>
+            <li>Feature 3</li>
+          </ul>
+          <p class="price">$1000/month</p>
+          <button class="btn btn-primary subscribe-button" (click)="toggleBasicPlan()">Subscribe</button>
+        </div>
+      </div>
+    
+      <!-- Medium Plan -->
+      <div class="col-md-4 data">
+        <div class="subscription-plan">
+          <h2>Medium Plan</h2>
+          <!-- <p class="description">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+          <ul>
+            <li>Feature 1</li>
+            <li>Feature 2</li>
+            <li>Feature 3</li>
+          </ul>
+          <p class="price">$1500/month</p>
+          <button class="btn btn-primary subscribe-button" (click)="toggleMediumPlan()">Subscribe</button>
+        </div>
+      </div>
+    
+      <!-- Advanced Plan -->
+      <div class="col-md-4 data">
+        <div class="subscription-plan">
+          <h1>Advanced Plan</h1>
+          <!-- <p class="description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+          <ul>
+            <li>Feature 1</li>
+            <li>Feature 2</li>
+            <li>Feature 3</li>
+          </ul>
+          <p class="price">$2000/month</p>
+          <button class="btn btn-primary subscribe-button" (click)="toggleAdvancedPlan()">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    
+
+  
+  
+  <div  class="pay">
+    <div *ngIf="showBasicPlan"> 
+       <h1>Basic Plan </h1>
+       <ul>
+         <li>Feature 1</li>
+         <li>Feature 2</li>
+         <li>Feature 3</li>
+       </ul>
+       <p class="price">$1000/month</p>
+       <button class="subscribe-button" (click)="subscribeToPlan('Basic Plan')">Subscribe</button>
+     </div>
+   
+     <!-- Display Medium Plan Details -->
+     <div *ngIf="showMediumPlan">
+       <h1>Medium Plan</h1>
+       <ul>
+         <li>Feature 1</li>
+         <li>Feature 2</li>
+         <li>Feature 3</li>
+       </ul>
+       <p class="price">$1500/month</p>
+       <button class="subscribe-button" (click)="subscribeToPlan('Medium Plan')">Subscribe</button>
+     </div>
+   
+     <!-- Display Advanced Plan Details -->
+     <div *ngIf="showAdvancedPlan">
+       <h1>Advanced Plan includes</h1>
+       <ul>
+         <li>Feature 1</li>
+         <li>Feature 2</li>
+         <li>Feature 3</li>
+       </ul>
+       <p class="price">$2000/month</p>
+       <button class="subscribe-button" (click)="subscribeToPlan('Advanced Plan')">Subscribe</button>
+     </div>
+      </div>

@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngIf="!selectedUser">
+      <!-- Display chat list -->
+      <div class="list-group">
+        <a
+          *ngFor="let chat of chatList"
+          class="list-group-item list-group-item-action"
+          (click)="openChat(chat)"
+          style="cursor: pointer; display: flex; align-items: center;"
+
+        >
+          {{ chat.userName }}
+          <img [src]="chat.userAvatar" alt="User Avatar">
+  <h5>{{ chat.userName }}</h5>
+  <p>{{ chat.lastMessage }}</p>
+  <small>{{ chat.timestamp | date: 'MMM dd, yyyy HH:mm' }}</small>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8 offset-md-4" *ngIf="selectedUser">
+      <!-- Display chat window -->
+      
+      <app-chat-window
+        [user]="selectedUser"
+        (closeChat)="closeChat()"
+      ></app-chat-window>
+    </div>
+  </div>
+</div>

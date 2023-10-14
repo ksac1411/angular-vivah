@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Filters</h4>
+    </div>
+    <div class="card-body">
+      <!-- Add filter form controls here -->
+      <div class="mb-3">
+        <label for="age">Age Range:</label>
+        <input type="number" id="minAge" placeholder="Min Age" [(ngModel)]="minAge">
+        <input type="number" id="maxAge" placeholder="Max Age" [(ngModel)]="maxAge">
+      </div>
+  
+      <div class="mb-3">
+        <label for="religion">Religion:</label>
+        <select id="religion" [(ngModel)]="selectedReligion">
+          <option value="">Any</option>
+          <option value="Hinduism">Hinduism</option>
+          <option value="Christianity">Christianity</option>
+          <!-- Add more religion options here -->
+        </select>
+      </div>
+  
+      <!-- Add more filter options here -->
+  
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="applyFilters()">Apply Filters</button>
+        <button class="btn btn-secondary" (click)="resetFilters()">Reset Filters</button>
+      </div>
+    </div>
+  </div>
+  

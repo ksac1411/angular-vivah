@@ -1,0 +1,57 @@
+/* Apply base styles */
+.footer {
+  background-color:darkblue; /* Set a background color */
+  color: white; /* Set the text color to white */
+  padding: 20px 0; /* Add padding for spacing */
+position: relative;
+}
+
+/* Style the links */
+.footer a {
+  color: white; /* Set link text color to white */
+  text-decoration: none; /* Remove underlines from links */
+  margin-left: 140px; 
+/* Add right margin to separate links */
+  font-weight: bold;
+  font-size: large;
+
+}
+.footer .footer-link:last-child {
+  margin-right: 0; /* Remove right margin for the last link */
+}
+
+/* Style the links on hover */
+.footer a:hover {
+  color: yellow;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 767px) {
+  .footer {
+    text-align: center; /* Center-align footer content */
+  }
+  .footer a {
+    display: block; /* Display links as blocks to stack vertically */
+    margin: 10px 0; /* Add vertical margin between links */
+  }
+  .footer .container {
+    padding: 0; /* Remove container padding for full-width footer */
+  }
+}
+
+/* Responsive styles for medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer a {
+    margin-right: 20px; /* Increase right margin for links */
+  }
+}
+
+/* Responsive styles for large screens */
+@media (min-width: 992px) {
+  .footer {
+    padding: 20px 0; /* Reset padding for larger screens */
+  }
+  .footer a {
+    margin-right: 15px; /* Reset right margin for larger screens */
+  }
+}

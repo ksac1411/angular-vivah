@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* You can add global styles to this file, and also import other style files */
+body
+{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+
+}
+/* } Media query for screens with a minimum width of 576px (small devices) */ 
+@media screen and (min-width: 576px) {}
+    /* Styles for small devices (576px and up) */
+    .home img {
+        height: 600px; /* Adjust for small devices */
+    }
+
+    .homecontent h1 {
+        font-size: 28px; /* Adjust for small devices */
+    }
+
+
+/* Media query for screens with a minimum width of 768px (medium devices) */
+@media screen and (min-width: 768px) {
+    /* Styles for medium devices (768px and up) */
+    .home img {
+        height: 700px; /* Adjust for medium devices */
+    }
+
+    .homecontent h1 {
+        font-size: 32px; /* Adjust for medium devices */
+    }
+}
+
+/* Media query for screens with a minimum width of 992px (large devices) */
+@media screen and (min-width: 992px) {
+    /* Styles for large devices (992px and up) */
+    .home img {
+        height: 800px; /* Adjust for large devices */
+    }
+
+    .homecontent h1 {
+        font-size: 36px; /* Adjust for large devices */
+    }
+}
+
+/* Media query for screens with a minimum width of 1200px (extra large devices) */
+@media screen and (min-width: 1200px) {
+    /* Styles for extra large devices (1200px and up) */
+    .home img {
+        height: 900px; /* Adjust for extra large devices */
+    }
+
+    .homecontent h1 {
+        font-size: 40px; /* Adjust for extra large devices */
+    }
+}
+
+  /* Media query to adjust 
+  
+  
+  
+  navigation bar padding on smaller screens */
+  @media (max-width: 767px) {
+    .navbar {
+      padding: 10px 0; 
+    }
+
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

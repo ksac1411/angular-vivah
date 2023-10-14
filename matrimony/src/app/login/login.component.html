@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body card-body-with-bg"> 
+      <h2 class="card-title text-center">Login</h2>
+      <form (ngSubmit)="submitForm()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Username</label>
+          <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your Email or mobile no."
+                 [(ngModel)]="logindata.phoneNumber" name="phoneNumber">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="password" placeholder="Enter your password"
+          [(ngModel)]="logindata.password" name="password"> <!-- Updated user.Password to user.password -->
+        <!-- </div>
+        <div>
+          <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
+              <i class="bi {{ showPassword ? 'bi-eye-slash' : 'bi-eye' }}"></i>
+            </button> -->
+          </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="logindata.rememberMe" name="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <div class="mt-3 text-center">
+          <a routerLink="/forgotpassword">Forgot Password?</a>
+        </div>
+        <div class="mt-3 para">
+          <p>New On Vivah</p>
+        </div>
+        <div class="mt-3 text-center">
+          <a routerLink="/signup" class="btn btn-success">Sign Up</a>
+        </div>
+      </form> 
+    </div>
+  </div>
+</div>

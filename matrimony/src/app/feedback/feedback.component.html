@@ -1,0 +1,51 @@
+<div class="container">
+  <h1 class="mt-4">Suggestion Box</h1>
+  <form #suggestionForm="ngForm" (ngSubmit)="submitFeedback()">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" [(ngModel)]="formData.id" class="form-control" placeholder="Your ID" required>
+    </div>
+
+    <!-- Name Input -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control" placeholder="Your Username" required>
+    </div>
+
+    <!-- Rating Input -->
+    <div class="form-group">
+      <label for="rating">How would you rate our service:</label>
+      <ngb-rating [max]="5" [(ngModel)]="selectedRating" name="rating" required></ngb-rating>
+    </div>
+
+    <!-- Messages based on Rating -->
+    <div class="message" *ngIf="selectedRating === 5">
+      Excellent service! Thank you for your positive feedback!
+    </div>
+
+    <div class="message" *ngIf="selectedRating === 4">
+      Great! We're glad you're satisfied with our service.
+    </div>
+
+    <div class="message" *ngIf="selectedRating === 3">
+      Thank you for your feedback. We'll strive to improve.
+    </div>
+
+    <div class="message" *ngIf="selectedRating === 2">
+      We're sorry to hear that. Please provide more details in the suggestion box.
+    </div>
+
+    <div class="message" *ngIf="selectedRating === 1">
+      We apologize for the poor experience. We'll work on improving our service.
+    </div>
+
+    <!-- Suggestion Textarea -->
+    <div class="form-group">
+      <label for="suggestionText">Suggestion:</label>
+      <textarea id="suggestionText" name="suggestionText" [(ngModel)]="formData.suggestionText" class="form-control" placeholder="Help us to serve you better by providing your precious feedback..." rows="4" required></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

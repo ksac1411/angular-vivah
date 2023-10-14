@@ -1,0 +1,112 @@
+/* Style for the subscription plans */
+.display-4 {
+    font-size: 2rem; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4rem; /* Adjust the top margin as needed */
+}
+
+.subscription-plan {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px lightblue;
+    margin: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.subscription-plan:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.subscription-plan h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.subscription-plan ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subscription-plan ul li {
+    margin-bottom: 10px;
+}
+
+.subscription-plan .price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Style for the subscribe button inside subscription plans */
+.subscription-plan .subscribe-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.subscription-plan .subscribe-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Style for the detailed plan information */
+.pay {
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 10px 9px lightblue;
+    margin: 10px auto; /* Center the section horizontally and adjust margin to your liking */
+    max-width: 500px;
+    /* Add margin to separate the plans */
+}
+
+.pay h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.pay ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.pay ul li {
+    margin-bottom: 10px;
+}
+
+.pay .price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Style for the subscribe button inside detailed plan information */
+.pay .subscribe-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.pay .subscribe-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}

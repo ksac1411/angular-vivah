@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    justify-content: center; /* Horizontally center-align items */
+    align-items: center; /* Vertically center-align items */
+    height: 100vh; /* Adjust the height as needed */
+  }
+  
+  /* Custom CSS for the button container */
+.button-container {
+    text-align: center; /* Center-align the buttons horizontally */
+    margin-top: 20px; /* Add some top margin for spacing */
+  }
+  
+  /* Custom CSS for the buttons */
+  .custom-button {
+    margin: 10px; /* Add margin around the buttons */
+    font-size: 18px; /* Adjust the font size as needed */
+    padding: 10px 20px; /* Add padding to the buttons */
+    border-radius: 5px; /* Add rounded corners */
+  }
+  
+  /* Custom CSS for the primary button color */
+  .custom-button.primary {
+    background-color: #007bff; /* Change the background color */
+    border-color: #007bff; /* Change the border color */
+    color: #fff; /* Change the text color */
+  }
+  
+  /* Custom CSS for button hover effect */
+  .custom-button:hover {
+    background-color: #0056b3; /* New background color on hover */
+    border-color: #0056b3; /* New border color on hover */
+  }
+  
+  .move-up {
+    margin-top: -50px; /* Adjust the negative margin to move the buttons up */
+  }

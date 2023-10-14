@@ -1,0 +1,22 @@
+/* CSS for Footer */
+.footer {
+    background-color: whitesmoke; /* Set your desired background color */
+    color: #333; /* Text color */
+    padding: 10px 0; /* Adjust the padding as needed */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .footer p {
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* Center the copyright text */
+  @media (max-width: 768px) {
+    .footer p {
+      text-align: center;
+    }
+  }

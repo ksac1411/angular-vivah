@@ -1,0 +1,26 @@
+
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title text-center">Contact Us</h2>
+        <form (ngSubmit)="submitForm()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                   [(ngModel)]="formData.name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                   [(ngModel)]="formData.email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"
+                      [(ngModel)]="formData.message" name="message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>

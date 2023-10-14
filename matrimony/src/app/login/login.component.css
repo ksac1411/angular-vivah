@@ -1,0 +1,128 @@
+
+
+/* Center the card on the page */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Add padding and style to the card */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* margin-top:-125px; */
+    /* height: auto; */
+  }
+  
+  /* Center the card title */
+  .card-title {
+    text-align: center;
+  }
+  
+  /* Add some spacing between form elements */
+  .mb-3 {
+    margin-bottom: 15px;
+  }
+  
+  /* Style the form labels */
+  .form-label {
+    font-weight: bold;
+  }
+  
+  /* Style the input fields */
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+  
+  /* Style the password toggle button */
+  .input-group {
+    position: relative;
+  }
+  
+  #togglePassword {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Style the "Remember me" checkbox */
+  .form-check {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the "Login" button */
+  .btn-primary {
+    
+    background-color: #007bff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px 40px; /* Adjust padding to increase button size */
+    font-size: 1.2rem; /* Adjust font size to make the text larger */
+
+    
+  }
+
+  .btn-primary:hover
+  {color: white;
+background-color: darkblue;}
+
+  /* Style the "Forgot Password?" link */
+  .mt-3 {
+    text-align: center;
+  }
+  
+  /* Style the eye icon */
+  .bi-eye {
+    font-size: 1.25rem;
+  }
+  
+  /* Adjust the checkbox alignment */
+  .form-check-label {
+    margin-left: 5px;
+  }
+  .btn-success {
+    background-color: #007bff;
+  
+    border-color: #007bff;
+    color:white;
+  }
+  
+  .btn-success:hover {
+    background-color:darkblue;
+    /* border-color:darkblue; */
+  }
+  
+  /* Style the "Forgot Password?" link */
+  a {
+    color: #007bff;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .para{
+    font-size: medium;
+    text-align: center;
+    font-weight: bold;
+    color:darkblue;
+   }
+  /* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (typical tablets and small laptops) */
+  .container {
+    padding: 10px; /* Add some padding to the container for better spacing */
+  }
+  .card {
+    max-width: 100%; /* Make the card full width on small screens */
+  }
+}
