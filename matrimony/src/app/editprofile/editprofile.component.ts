@@ -93,7 +93,7 @@ export class EditprofileComponent implements OnInit {
 
   deleteProfile() {
     // Send an HTTP request to delete the user's profile
-    this.userservice.deleteUser(this.user.userid).subscribe(
+    this.userservice.deleteUser(this.user.userId).subscribe(
       (response: any) => {
         // Handle the success response, e.g., show a confirmation message
         console.log('Profile deleted successfully:', response);

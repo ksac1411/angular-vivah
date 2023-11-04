@@ -1,0 +1,29 @@
+<div class="report-form-container">
+    <h2>Report Profile</h2>
+    <div class="profile-id-container">
+      <p class="fs-5">Profile User ID: {{ profileUserId }}</p>
+    </div>
+    <div class="reason-field form-group">
+      <select class="form-select" id="reason" [(ngModel)]="selectedReason">
+        <option value="" disabled selected>Select Reason</option>
+        <option *ngFor="let reason of reasons" [value]="reason">{{ reason }}</option>
+      </select>
+    </div>
+    <div class="next-button-container">
+        <button class="btn btn-primary" (click)="goToNextStep()">Next</button>
+      </div>
+        <div class="file-upload-container" *ngIf="showTextArea">
+            <label for="fileUpload">
+              <i class="fas fa-thumbtack"></i> Attach File
+            </label>
+            <input type="file" id="fileUpload" (change)="handleFileInput($event)">
+          </div>
+          
+    <div class="text-area-container" *ngIf="showTextArea">
+      <textarea class="form-control" placeholder="Additional Details"></textarea>
+    </div>
+    <div class="submit-button-container" *ngIf="showTextArea">
+      <button class="btn btn-primary" (click)="submitReport()">Report</button>
+    </div>
+  </div>
+  

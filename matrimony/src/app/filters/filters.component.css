@@ -1,0 +1,45 @@
+/* filter.component.css */
+.container {
+    margin: 20px;
+  }
+  
+  .list-group {
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    margin-bottom: 20px;
+    font-size: large;
+    padding: 20px;
+  }
+  
+  /* Style the label */
+  .form-label {
+    font-weight: bold;
+    font-size: medium; /* Increase the font size */
+  }
+  
+  /* Style the input fields */
+  .form-control {
+    width: 50%;
+    padding: 10px; /* Increase the padding */
+    border-radius: 8px; /* Increase the border radius */
+    border: 1px solid #ced4da;
+    font-size: medium; /* Increase the font size */
+  }
+  
+  /* Style the button */
+  .btn-primary {
+    padding: 10px 30px; /* Increase the padding */
+    background-color:darkblue;
+    color: #fff;
+    border: none;
+    border-radius: 8px; /* Increase the border radius */
+    cursor: pointer;
+    font-size: 16px; /* Increase the font size */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

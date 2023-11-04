@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Verification</h2>
+    <form class="needs-validation" (ngSubmit)="onSubmit()" novalidate>
+      <div class="mb-3">
+        <label for="idType" class="form-label">Select ID Proof Type:</label>
+        <select id="idType" class="form-select" required [(ngModel)]="idType" name="idType">
+          <option value="">-- Select ID Proof Type --</option>
+          <option value="aadhar">Aadhar Card</option>
+          <option value="pan">PAN Card</option>
+          <option value="passport">Passport</option>
+          <option value="voterId">Voter ID</option>
+          <option value="drivingLicense">Driving License</option>
+          <!-- Add other ID proof options here -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="idNumber" class="form-label">Enter ID Number:</label>
+        <input type="text" class="form-control" id="idNumber" required [(ngModel)]="idNumber" name="idNumber">
+        <div class="invalid-feedback">Please enter a valid ID number.</div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Verify</button>
+      </div>
+    </form>
+  </div>
+  

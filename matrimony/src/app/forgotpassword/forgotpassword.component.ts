@@ -1,57 +1,79 @@
 import { Component } from '@angular/core';
-import { ElementRef, ViewChild } from '@angular/core';
-import { UserserviceService } from '../userservice.service';
 import { Logindata } from '../logindata';
+import { OTP } from '../otp';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
   styleUrls: ['./forgotpassword.component.css']
 })
-export class ForgotpasswordComponent {
-  logindata: Logindata = new Logindata(); // Initialize a User object
+export class ForgotPasswordComponent {
+  showOtpInput: boolean = false;
+  showPasswordInput: boolean = false;
+  logindata: Logindata = new Logindata();
+  otp: OTP = new OTP();
 
-  
-  @ViewChild('newPasswordInput')
-  newPasswordInput!: ElementRef;
-  @ViewChild('confirmPasswordInput')
-  confirmPasswordInput!: ElementRef;
+  constructor(private userService: UserserviceService) {}
 
-  constructor(private usersserviceService: UserserviceService) {} // Inject the service
-  submitForm() {
-    // Check if passwords match before sending the reset request
-    if (this.logindata.password === this.logindata.confirmPassword) {
-      this.usersserviceService.resetPassword(this.logindata.usernameOrEmail, this.logindata.password)
-        .subscribe(
-          (response:any) => {
-            console.log('Password reset successful:', response);
-            // Handle success, e.g., display a success message or navigate to a login page.
+  onSubmit() {
+    if (!this.showOtpInput) {
+      // First, send the OTP
+      this.userService.sentOtp(this.logindata.phoneNumber).subscribe(
+        (response: any) => {
+          // OTP sent successfully
+          console.log('OTP sent successfully:', response);
+          this.showOtpInput = true;
+        },
+        (error: any) => {
+          // Handle error
+          console.error('Error sending OTP:', error);
+        }
+      );
+    } else if (this.showOtpInput && !this.showPasswordInput) {
+      // Verify the OTP
+      this.userService.verifyOtp(this.otp.otp).subscribe(
+        (response: any) => {
+          // OTP verified successfully
+          console.log('OTP verified successfully:', response);
+          this.showPasswordInput = true;
+        },
+        (error: any) => {
+          // Handle error
+          console.error('Error verifying OTP:', error);
+        }
+      );
+    } else {
+      // Change the password
+      if (this.logindata.password === this.logindata.confirmPassword) {
+        this.userService.changePassword(this.logindata.password).subscribe(
+          (response: any) => {
+            // Password changed successfully
+            console.log('Password changed successfully:', response);
           },
-          (error:any) => {
-            console.error('Password reset failed:', error);
-            // Handle error, e.g., display an error message.
+          (error: any) => {
+            // Handle error
+            console.error('Error changing password:', error);
           }
         );
-    } else {
-      console.error('Passwords do not match');
-      // Handle password mismatch error, e.g., display an error message.
+      } else {
+        // Handle password mismatch error
+        console.error('Passwords do not match');
+      }
     }
-
   }
-  
-  togglePassword(inputType: string) {
-    const inputField = inputType === 'new' ? this.newPasswordInput.nativeElement : this.confirmPasswordInput.nativeElement;
-    const currentInputType = inputField.type;
-    inputField.type = currentInputType === 'password' ? 'text' : 'password';
-  }
-  // newPasswordVisible = false;
-  // confirmPasswordVisible = false;
 
-  // togglePassword(type: 'new' | 'confirm') {
-  //   if (type === 'new') {
-  //     this.newPasswordVisible = !this.newPasswordVisible;
-  //   } else if (type === 'confirm') {
-  //     this.confirmPasswordVisible = !this.confirmPasswordVisible;
-  //   }
-  // }
+  resendOtp() {
+    // Logic for resending the OTP
+    this.userService.sentOtp(this.logindata.phoneNumber).subscribe(
+      (response: any) => {
+        // OTP resent successfully
+        console.log('OTP resent successfully:', response);
+      },
+      (error: any) => {
+        // Handle error
+        console.error('Error resending OTP:', error);
+      }
+    );
+  }
 }

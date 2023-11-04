@@ -1,31 +1,69 @@
-<div class="card">
-    <div class="card-header">
-      <h4>Filters</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group">
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Age')">Age</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Diet')">Diet</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Education')">Education</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Income')">Income</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Height')">Height</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Religion')">Religion</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Mother Tongue')">Mother Tongue</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('CasteGroup')">Caste Group</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Country')"> Country</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('MaritalStatus')"> Marital Status</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Horoscope')"> Horoscope</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Manglik')"> Manglik</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('ResidentialStatus')"> Residential Status</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('occupation')">Occupation</button>
+
+
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('City')"> City</button>
+        <button class="list-group-item list-group-item-action" (click)="selectFilter('Emplyed')"> Emplyed In</button>
+
+
+
+        <!-- Add more filter options here as needed -->
+      </div>
     </div>
-    <div class="card-body">
-      <!-- Add filter form controls here -->
-      <div class="mb-3">
-        <label for="age">Age Range:</label>
-        <input type="number" id="minAge" placeholder="Min Age" [(ngModel)]="minAge">
-        <input type="number" id="maxAge" placeholder="Max Age" [(ngModel)]="maxAge">
+    <div class="col-9">
+      <div class="filter-item" *ngIf="selectedFilter === 'Age'">
+        <label for="age" class="form-label">Age:</label>
+        <input type="number" id="age" class="form-control" [(ngModel)]="filterOptions.age" name="age">
       </div>
-  
-      <div class="mb-3">
-        <label for="religion">Religion:</label>
-        <select id="religion" [(ngModel)]="selectedReligion">
-          <option value="">Any</option>
-          <option value="Hinduism">Hinduism</option>
-          <option value="Christianity">Christianity</option>
-          <!-- Add more religion options here -->
-        </select>
+       <div class="col-9">
+        <div class="filter-item" *ngIf="selectedFilter === 'Height'">
+          <label for="height" class="form-label">Height:</label>
+          <input type="number" id="age" class="form-control" [(ngModel)]="filterOptions.age" name="age">
+        </div> <div class="col-9">
+          <div class="filter-item" *ngIf="selectedFilter === 'Age'">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" id="age" class="form-control" [(ngModel)]="filterOptions.age" name="age">
+          </div> <div class="col-9">
+            <div class="filter-item" *ngIf="selectedFilter === 'Age'">
+              <label for="age" class="form-label">Age:</label>
+              <input type="number" id="age" class="form-control" [(ngModel)]="filterOptions.age" name="age">
+            </div>
+      <div class="filter-item" *ngIf="selectedFilter === 'Location'">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" id="location" class="form-control" [(ngModel)]="filterOptions.location" name="location">
       </div>
-  
-      <!-- Add more filter options here -->
-  
-      <div class="text-center">
-        <button class="btn btn-primary" (click)="applyFilters()">Apply Filters</button>
-        <button class="btn btn-secondary" (click)="resetFilters()">Reset Filters</button>
+      <div class="filter-item" *ngIf="selectedFilter === 'Education'">
+        <label for="education" class="form-label">Education:</label>
+        <input type="text" id="education" class="form-control" [(ngModel)]="filterOptions.education" name="education">
+      </div>
+      <div class="filter-item" *ngIf="selectedFilter === 'Income'">
+        <label for="income" class="form-label">Income:</label>
+        <input type="text" id="income" class="form-control" [(ngModel)]="filterOptions.income" name="income">
+      </div>
+      <div class="filter-item" *ngIf="selectedFilter === 'Occupation'">
+        <label for="occupation" class="form-label">Occupation:</label>
+        <input type="text" id="occupation" class="form-control" [(ngModel)]="filterOptions.occupation" name="occupation">
+      </div>
+      <!-- Add more filter options here as needed -->
+      <div class="filter-item">
+        <button (click)="applyFilters()" class="btn btn-primary">Apply Filters</button>
       </div>
     </div>
   </div>
-  
+</div>

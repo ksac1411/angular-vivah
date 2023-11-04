@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
  import { User } from './user';
 import { OTP } from './otp';
 import { Contact } from './contact';
@@ -13,12 +13,20 @@ import { PhonebookItem } from './phonebookitems';
 })
 export class UserserviceService {
 
-  
+  userId: any;
   
   private apiUrl = 'http://localhost:8080/api';
   isLoggedIn: any;
+  userservice: any;
 
   constructor(private http: HttpClient) { }
+  setUserId(userId: any): void {
+    this.userId = userId;
+  }
+
+  getUserId(): any {
+    return this.userId;
+  }
 
 //   sentOtp(User :User): Observable<any> {
 //  return this.http.post(`${this.apiUrl}/sentOtp`, User);
@@ -38,7 +46,10 @@ sentOtp(logindata: Logindata): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, logindata);
   }
   
-
+  changePassword(password: string): Observable<any> {
+    // Implement logic to change password
+    return this.http.post(this.apiUrl, { password });
+  }
   // signup(User :User): Observable<any> {
   
   //   return this.http.post(`${this.apiUrl}/register`, User);
@@ -51,7 +62,16 @@ sentOtp(logindata: Logindata): Observable<any> {
   login(logindata: Logindata): Observable<any> {
     console.log(logindata, ' service file');
     return this.http.post(`${this.apiUrl}/login`, logindata);
-  }
+    pipe(
+      tap((response: any) => {
+        // Assuming the response contains the userId
+        if (response && response.userid) {
+          this.userservice.setUserId(response.userid); // Set the userId in the userService
+        }
+      })
+    );
+}
+  
   
 
   search(searchCriteria: User): Observable<User[]> {
@@ -59,12 +79,23 @@ sentOtp(logindata: Logindata): Observable<any> {
     return this.http.post<User[]>(`${this.apiUrl}/search`, searchCriteria);
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getUser?id=${id}`);
+  // getUserById(userId: number): Observable<any> {
+  //   return this.http.get(`${this.apiUrl}/getUser?id=${userId}`);
+  // }
+  
+
+  getUserById(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/getUser`;
+    const body = { userId: userId };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(url, body, httpOptions)
+      
   }
-  getUserId(): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/getUser`);
-  }
+
 
 
   resetPassword(usernameOrEmail: string, password: string): Observable<any> {
@@ -92,7 +123,10 @@ sentOtp(logindata: Logindata): Observable<any> {
     const url = `${this.apiUrl}/updateUser`;
     return this.http.post<User>(url, user);
   }
-  
+  deleteUser(id: number): Observable<string> {
+    const url = `${this.apiUrl}/deleteUser?Id=${id}`;
+    return this.http.delete<string>(url);
+  }
 
   feedback(feedback: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -109,58 +143,107 @@ sentOtp(logindata: Logindata): Observable<any> {
     return this.http.post(`${this.apiUrl}/accept`, {}, { params });
   }
   
-  acceptedList(userid: number): Observable<any> {
+  declineMem(userId: number, declined_mem: number): Observable<any> {
     const params = new HttpParams()
-      .set('userid', userid.toString()) // Convert to string if not already
+    .set('userId', userId.toString()) // Convert to string if not already
+    .set('declined_mem', declined_mem.toString());
   
-    return this.http.post(`${this.apiUrl}/acceptedList`, {}, { params });
+  return this.http.post(`${this.apiUrl}/decline`, {}, { params });
   }
   
+  blockMem(userId: number, blocked_mem: number): Observable<any> {
+    const params = new HttpParams()
+      .set('userId', userId.toString()) // Convert to string if not already
+      .set('blocked_mem', blocked_mem.toString());
+  
+    return this.http.post(`${this.apiUrl}/blocked`, {}, { params });
+  }
+  
+  getAcceptedUsersList(userId: string): Observable<User[]> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.apiUrl}/accepteList?userId=${userId}`;
+    return this.http.post<User[]>(url, { headers });
+  }
 
-
-  declineMem(userId: number, declined_mem: number): Observable<any> {
-  const params = new HttpParams()
-  .set('userId', userId.toString()) // Convert to string if not already
-  .set('declined_mem', declined_mem.toString());
-
-return this.http.post(`${this.apiUrl}/decline`, {}, { params });
-}
-
-
+  
  
-blockMem(userId: number, blocked_mem: number): Observable<any> {
-  const params = new HttpParams()
-    .set('userId', userId.toString()) // Convert to string if not already
-    .set('blocked_mem', blocked_mem.toString());
-
-  return this.http.post(`${this.apiUrl}/blocked`, {}, { params });
+getDeclinedUsersList(userId: string): Observable<User[]> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const url = `${this.apiUrl}/declineList?userId=${userId}`;
+  return this.http.post<User[]>(url, { headers });
 }
-getAcceptedMembers(userid: number): Observable<User[]> {
-  const params = new HttpParams().set('userId', userid.toString());
+ 
 
-  return this.http.post<User[]>(`${this.apiUrl}/accepteList`, null, { params });
+// getAcceptedMembers(userid: number): Observable<User[]> {
+//   const params = new HttpParams().set('userId', userid.toString());
+
+//   return this.http.post<User[]>(`${this.apiUrl}/accepteList`, null, { params });
+// }
+
+// getDeclinedMembers(userId: number): Observable<User[]> {
+//   const params = new HttpParams().set('userId', userId.toString());
+
+//   return this.http.post<User[]>(`${this.apiUrl}/declineList`, null, { params });
+// }
+
+getBlockedUsersList(userId: string): Observable<User[]> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const url = `${this.apiUrl}/blockList?userId=${userId}`;
+  return this.http.post<User[]>(url, { headers });
+}
+getShortlistedUsersList(userId: string): Observable<User[]> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const url = `${this.apiUrl}/shortList?userId=${userId}`;
+  return this.http.post<User[]>(url, { headers });
 }
 
-getDeclinedMembers(userId: number): Observable<User[]> {
-  const params = new HttpParams().set('userId', userId.toString());
 
-  return this.http.post<User[]>(`${this.apiUrl}/declineList`, null, { params });
+
+getreceivedUsersList(userId: string): Observable<User[]> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const url = `${this.apiUrl}/receivedList?userId=${userId}`; // Include userId in the URL
+  return this.http.post<User[]>(url, { headers }); // Change to GET request
 }
 
-getBlockedMembers(userId: number): Observable<User[]> {
-  const params = new HttpParams().set('userId', userId.toString());
 
-  return this.http.post<User[]>(`${this.apiUrl}/blockList`, null, { params });
+
+receive(userId: string, receivedMem: string): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/receive`, { userId, received_mem: receivedMem });
 }
 
-deleteUser(id: number): Observable<string> {
-  const url = `${this.apiUrl}/deleteUser?Id=${id}`;
-  return this.http.delete<string>(url);
+getSendUsersList(userId: string): Observable<User[]> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  const url = `${this.apiUrl}/sendList?userId=${userId}`;
+  return this.http.post<User[]>(url,  { headers });
 }
-getPhonebookList(userId: string): Observable<PhonebookItem[]> {
-  const url = `${this.apiUrl}/phonebook?userId=${userId}`;
-  return this.http.get<PhonebookItem[]>(url);
+
+send(userId: string, sendMem: string): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/send`, { userId, send_mem: sendMem });
 }
+getRecentlyJoinedUsers(): Observable<Object[]> {
+  return this.http.get<Object[]>(`${this.apiUrl}/recently-joined`);
+}
+
+getPhonebookList(userId: string): Observable<any> {
+  const url = `${this.apiUrl}/phonebookid`;
+  let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  return this.http.post(url, { userId }, { headers });
+}
+
+
+// getPhonebookList(userId: string): Observable<PhonebookItem[]> {
+//   const url = `${this.apiUrl}/phonebookid`;
+//   let params = new HttpParams().set('userId', userId); // Send "userId" as a query parameter
+//   let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+//   return this.http.post<PhonebookItem[]>(url, { params, headers }); // Use GET instead of POST
+// }
+
+
+
+
+
 
 
 }

@@ -8,5 +8,9 @@ email: any;
 phoneNumber: any;
 password: any;
 confirmPassword: any;
-userid: any;
-rememberMe = false;}
+userId: any;
+rememberMe = false;
+phoneNumberOrEmail:any;
+currentPassword:any;
+newPassword:any;
+}

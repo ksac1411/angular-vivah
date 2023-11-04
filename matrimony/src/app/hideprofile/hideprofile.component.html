@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">Hide Profile</h5>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="hideProfileCheckbox" [(ngModel)]="hideProfile" name="hideProfile">
+            <label class="form-check-label" for="hideProfileCheckbox">
+              Hide my profile from others
+            </label>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="oneMonth-tab" data-bs-toggle="tab" data-bs-target="#oneMonth" type="button" role="tab" aria-controls="oneMonth" aria-selected="true"(click)="selectHideDuration(1)">1 Month</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="threeMonths-tab" data-bs-toggle="tab" data-bs-target="#threeMonths" type="button" role="tab" aria-controls="threeMonths" aria-selected="false" (click)="selectHideDuration(3)">3 Months</button>
+            </li>
+            
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="sixMonths-tab" data-bs-toggle="tab" data-bs-target="#sixMonths" type="button" role="tab" aria-controls="sixMonths" aria-selected="false"(click)="selectHideDuration(6)">6 Months</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="oneYear-tab" data-bs-toggle="tab" data-bs-target="#oneYear" type="button" role="tab" aria-controls="oneYear" aria-selected="false"(click)="selectHideDuration(12)">1 Year</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="oneMonth" role="tabpanel" aria-labelledby="oneMonth-tab">1 month option is selected</div>
+            <div class="tab-pane fade" id="threeMonths" role="tabpanel" aria-labelledby="threeMonths-tab">3 months option is selected</div>
+            <div class="tab-pane fade" id="sixMonths" role="tabpanel" aria-labelledby="sixMonths-tab">6 months option is selected</div>
+            <div class="tab-pane fade" id="oneYear" role="tabpanel" aria-labelledby="oneYear-tab">1 year option is selected</div>
+          </div>
+          <div class="d-grid mt-3">
+            <button class="btn btn-primary" (click)="onHideProfile()">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

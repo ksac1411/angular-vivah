@@ -3,7 +3,8 @@ import { UserserviceService } from '../userservice.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Logindata } from '../logindata';
 import { LoginComponent } from '../login/login.component';
-import { ShareserviceService } from '../shareservice.service';
+import { ShareService } from '../ShareService';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboardheader',
@@ -11,25 +12,43 @@ import { ShareserviceService } from '../shareservice.service';
   styleUrls: ['./dashboardheader.component.css']
 })
 export class DashboardheaderComponent   {
+  userData: any;
+  userId: number | undefined;
+  userID: String | undefined;
 
-  constructor(private shareService: ShareserviceService, private userservice: UserserviceService) {}
-  acceptedMembers() {
-    this.userservice.acceptedList(this.shareService.globaluserid).subscribe(
-      (response) => {
-        console.log('Member accepted list:', response,this.shareService.globaluserid);
+  constructor(private route: ActivatedRoute, private shareservice: ShareService, private userservice: UserserviceService) {}
+  ngOnInit(): void {
+    this.userID = this.shareservice.getUserId();
 
-        // Handle success as needed
-      },
-      (error) => {
-        console.error('Error accepting member:', error);
-        // Handle errors as needed
-        if (error instanceof HttpErrorResponse) {
-          console.error('HTTP Error:', error.status);
-          console.error('Error Details:', error.error);
-        }
+    this.route.queryParams.subscribe(params => {
+      if (params['userData']) {
+        this.userData = JSON.parse(params['userData']);
+        this.userId = this.userData.id;
       }
-    );
+    });
   }
+
+  
+  
+  
+  
+  // acceptedMembers() {
+  //   this.userservice.acceptedList(this.shareService.globaluserId).subscribe(
+  //     (response) => {
+  //       console.log('Member accepted list:', response,this.shareService.globaluserId);
+
+  //       // Handle success as needed
+  //     },
+  //     (error) => {
+  //       console.error('Error accepting member:', error);
+  //       // Handle errors as needed
+  //       if (error instanceof HttpErrorResponse) {
+  //         console.error('HTTP Error:', error.status);
+  //         console.error('Error Details:', error.error);
+  //       }
+  //     }
+  //   );
+  // }
   acceptMember() {
     const userId = 4; // Replace with the actual userId
   const accepted_mem = 456;

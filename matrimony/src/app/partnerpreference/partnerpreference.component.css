@@ -1,0 +1,87 @@
+
+
+.container {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: large;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Additional styling for checkboxes and radio buttons */
+
+.form-check-input[type="checkbox"],
+.form-check-input[type="radio"] {
+  margin-top: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+/* Style for the form error messages */
+
+.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+/* Additional spacing for radio button labels */
+
+.form-check-label {
+  margin-right: 1rem;
+}
+
+/* Add margin to the top of the form */
+
+.mt-5 {
+  margin-top: 3rem;
+}
+/* styles.css or your custom CSS file */
+/* styles.css or your custom CSS file */
+
+/* Style the "Previous" button */
+/* styles.css or your custom CSS file */
+
+/* Style the "Previous" button */
+.btn-previous {
+  background-color: blue; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove button border */
+  padding: 10px 20px; /* Button padding */
+  margin-right: 10px; /* Right margin for spacing */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+/* Hover effect for "Previous" button */
+.btn-previous:hover {
+  background-color: #555 !important; /* New background color on hover */
+}
+
+/* Style the "Continue" button */
+.btn-continue {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove button border */
+  padding: 10px 20px; /* Button padding */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+/* Hover effect for "Continue" button */
+.btn-continue:hover {
+  background-color:darkblue !important; /* New background color on hover */
+}

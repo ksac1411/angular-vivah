@@ -1,35 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-
+// filter.component.ts
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.css']
 })
-export class FiltersComponent implements OnInit {
-  minAge: any;
-  maxAge: any;
-  selectedReligion: any;
+export class FiltersComponent {
+[x: string]: any;
+  filterOptions: any = {
+    age: null,
+    location: '',
+    education: '',
+    income: '',
+    occupation: ''
+    // Add more filter options here as needed
+  };
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  selectedFilter: string = ''; // This variable will hold the selected filter option
 
   applyFilters() {
-    // Implement filtering logic based on selected filter criteria
-    // You can emit filter criteria as an event or call a service to apply filters
-    console.log('Applying Filters');
-    console.log('Min Age:', this.minAge);
-    console.log('Max Age:', this.maxAge);
-    console.log('Selected Religion:', this.selectedReligion);
+    console.log('Applying filters:', this.filterOptions);
+    // Implement logic to apply filters
   }
 
-  resetFilters() {
-    // Reset all filter criteria to default values
-    this.minAge = undefined;
-    this.maxAge = undefined;
-    this.selectedReligion = '';
-    // Reset other filter criteria here as needed
+  selectFilter(filter: string) {
+    this.selectedFilter = filter;
   }
 }

@@ -7,7 +7,7 @@ import { UserserviceService } from '../userservice.service';
 
 
 import { Logindata } from '../logindata';
-import { ShareserviceService } from '../shareservice.service';
+import { ShareService } from '../ShareService';
 
 
 
@@ -25,11 +25,11 @@ export class LoginComponent {
   @ViewChild('passwordInput') passwordInput!: ElementRef;
   errorMessage: string | undefined;
   data: any;
-globaluserid:any;
 
 
 
-  constructor(private router: Router, private userservice: UserserviceService ,private shareService: ShareserviceService) {}
+
+  constructor(private router: Router, private userservice: UserserviceService ,private shareservice: ShareService) {}
 
 
 
@@ -40,9 +40,9 @@ globaluserid:any;
 
     this.userservice.login(this.logindata).subscribe(
       (data: any) => {
-        // Check if 'data' has expected properties before navigating
-        if (data && data.userid) {
-          this.shareService.globaluserid = data.userid; // Store the value in the service
+        // Check if 'data' haIs expected properties before navigating
+        if (data && data.userId) {
+          this.shareservice.setUserId = data.userId; // Store the value in the service
           this.data = data;
           const navigationExtras: NavigationExtras = {
             queryParams: { userData: JSON.stringify(this.data) }

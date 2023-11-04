@@ -1,28 +1,72 @@
-<!-- activity-log.component.html -->
-<div class="container mt-5">
-    <div class="card">
-      <div class="card-header">
-        Activity Log
-      </div>
+
+
+<nav class="navbar navbar-expand-lg">
+  <!-- ... (existing code) ... -->
+  <ul class="navbar-nav mr-auto">
+    <!-- <li class="nav-item">
+      <a class="nav-link" (click)="trackvisitor(123, 456);">ProfileVisits</a>
+
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-link" (click)="Shortlisted();">Shortlisted</a>
+    </li>
+
+  <li class="nav-item">
+    <a class="nav-link" (click)="received();">Receive Inrest</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="send();">Send Inrest</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="recentlyjoined();"> RecentlyJoined</a>
+    <div *ngIf="recentlyJoinedUsers">
+      <ul>
+        <li *ngFor="let user of recentlyJoinedUsers">
+          <!-- Display user data here as per your requirement -->
+        </li>
+      </ul>
+    </div>
+    
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="ProfileVisitors();"> Profile Visitors</a>
+  </li>
+</ul>
+  <ul class="navbar-nav ms-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="acceptMember(); ">Accept</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="declineMember()">Decline</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="blockMember()">Block</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Logout</a>
+    </li>
+  </ul>
+</nav>
+<div *ngIf="userList.length > 0; ">
+  <div class="card-container">
+    <div class="card" *ngFor="let user of userList">
+      <img [src]="user.profilephoto" alt="User Profile" class="profile-img">
       <div class="card-body">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">User Profile Updated</h5>
-              <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Updated profile information including education and career details.</p>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Photo Uploaded</h5>
-              <small>5 days ago</small>
-            </div>
-            <p class="mb-1">Uploaded a new profile photo.</p>
-          </a>
-          <!-- Add more activity log items as needed -->
-        </div>
+        <h5 class="card-title">{{ user.username }}</h5>
+        <p class="card-text">{{ user.city }}</p>
+        <p class="card-text">{{ user.income }}</p>
+        <p class="card-text">{{ user.age }}</p>
+        <p class="card-text">{{ user.occupation }}</p>
+        <p class="card-text">{{ user.state }}</p>
+
+
       </div>
     </div>
   </div>
-  
+</div>
+
+<!-- <ng-template #noUsers>
+  <p>No accepted users found.</p>
+</ng-template> -->

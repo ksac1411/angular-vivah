@@ -8,6 +8,7 @@ import { UserserviceService } from '../userservice.service';
 import { Logindata } from '../logindata';
  
 import { OTP } from '../otp';
+import { ShareService } from '../ShareService';
  
  
  
@@ -38,7 +39,7 @@ export class SignupComponent {
   constructor(
  
     private router: Router,
- 
+ private shareservice :ShareService ,
   //   private route: ActivatedRoute,
  
     private userService: UserserviceService
@@ -98,16 +99,55 @@ export class SignupComponent {
      
  
             if (data.success) {
+              
+            this.userService.signup(this.logindata).subscribe(
  
-              // OTP verification succeeded, you can navigate to the next page
+              (registrationResponse) => {
  
-              this.router.navigate(['/dashboard']);
+
+
+
+const userId = registrationResponse.userObj.userId;
+
+this.shareservice.setUserId(userId);
+
+
+
+
+
+                // User registration succeeded
+ 
+                console.log('User created successfully', registrationResponse);
+ 
+     
+ 
+                // Navigate to the desired page after successful sign-up
+  // OTP verification succeeded, you can navigate to the next page
+ 
+                this.router.navigate(['/dashboard']);
+ 
+              },
+ 
+              (registrationError) => {
+ 
+                // User registration failed
+ 
+                console.error('Error creating user', registrationError);
+ 
+                // Handle the error here
+ 
+              }
+ 
+            );
+ 
+             
+             
  
             } else {
  
               // OTP verification failed, you can display an error message to the user
  
-              // For example:
+            
  
               this.errorMessage = 'OTP verification failed. Please try again.';
  
@@ -155,33 +195,33 @@ export class SignupComponent {
  
             // Now, you can proceed with user registration
  
-            this.userService.signup(this.logindata).subscribe(
+            // this.userService.signup(this.logindata).subscribe(
  
-              (registrationResponse) => {
+            //   (registrationResponse) => {
  
-                // User registration succeeded
+            //     // User registration succeeded
  
-                console.log('User created successfully', registrationResponse);
+            //     console.log('User created successfully', registrationResponse);
  
      
  
-                // Navigate to the desired page after successful sign-up
+            //     // Navigate to the desired page after successful sign-up
  
-                this.router.navigate(['/createprofile']);
+            //     this.router.navigate(['/createprofile']);
  
-              },
+            //   },
  
-              (registrationError) => {
+            //   (registrationError) => {
  
-                // User registration failed
+            //     // User registration failed
  
-                console.error('Error creating user', registrationError);
+            //     console.error('Error creating user', registrationError);
  
-                // Handle the error here
+            //     // Handle the error here
  
-              }
+            //   }
  
-            );
+            // );
  
           },
  

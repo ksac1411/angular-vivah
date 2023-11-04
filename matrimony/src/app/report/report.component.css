@@ -1,0 +1,34 @@
+.report-form-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.profile-id-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.reason-field {
+  margin-bottom: 20px;
+}
+
+.next-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.text-area-container {
+  margin-top: 20px;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

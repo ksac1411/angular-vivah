@@ -7,7 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { HelpComponent } from './help/help.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ForgotPasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SearchbycriteriaComponent } from './searchbycriteria/searchbycriteria.component';
 import { SearchbyidComponent } from './searchbyid/searchbyid.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
@@ -25,11 +25,25 @@ import { MemberComponent } from './member/member.component';
 import { ActivityComponent } from './activity/activity.component';
 import { MatchesComponent } from './matches/matches.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-
-
+import { VerifyidComponent } from './verifyid/verifyid.component';
+import { PartnerpreferenceComponent } from './partnerpreference/partnerpreference.component';
+import { ReportComponent } from './report/report.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { PrivacysettingComponent } from './privacysetting/privacysetting.component';
+import { HideprofileComponent } from './hideprofile/hideprofile.component';
+import { DeleteComponent } from './delete/delete.component';
 
 const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
+  {path:'verifyid',component:VerifyidComponent},
+  {path:'partnerpreference',component:PartnerpreferenceComponent},
+  {path:'partnerpreference',component:MatchesComponent},
+  {path:'report',component:ReportComponent},
+  {path:'changepassword',component:ChangepasswordComponent},
+{path:'privacysetting', component:PrivacysettingComponent},
+{path:'hideprofile', component:HideprofileComponent},
+{path:'delete', component:DeleteComponent},
+
 {path:'messenger', component:MessengerComponent},
   {path:'contactus',component:ContactusComponent},
 { path: 'edit-profile', component: EditprofileComponent },
@@ -44,11 +58,10 @@ const routes: Routes = [
 {path:'chat-list',component:MessengerComponent},
 { path: 'chat-list', component: ChatListComponent },
 { path: 'chat/:userId', component: ChatWindowComponent },
-  {path:'Forgotpassword',component:ForgotpasswordComponent},
+  {path:'forgotpassword',component:ForgotPasswordComponent},
 {path:'home',component:HomeComponent},
 {path:'signup',component:SignupComponent},
 {path:'login' ,component:LoginComponent},
-{path:'forgotpassword',component:ForgotpasswordComponent},
 {path:'Help' ,component:HelpComponent}, 
 { path: 'search-by-id', component: SearchbyidComponent },
 { path: 'search-by-criteria', component:SearchbycriteriaComponent }, 

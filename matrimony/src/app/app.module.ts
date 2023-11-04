@@ -1,6 +1,5 @@
 
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,7 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { HelpComponent } from './help/help.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ForgotPasswordComponent } from './forgotpassword/forgotpassword.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchbyidComponent } from './searchbyid/searchbyid.component';
 import { SearchbycriteriaComponent } from './searchbycriteria/searchbycriteria.component';
@@ -41,8 +40,22 @@ import { MemberComponent } from './member/member.component';
 import { ActivityComponent } from './activity/activity.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './sidenav/sidenav.component'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';import { VerifyidComponent } from './verifyid/verifyid.component';
+import { PartnerpreferenceComponent } from './partnerpreference/partnerpreference.component';
+import { ReportComponent } from './report/report.component'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PrivacysettingComponent } from './privacysetting/privacysetting.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { HideprofileComponent } from './hideprofile/hideprofile.component';
+import { DeleteComponent } from './delete/delete.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +65,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ContactusComponent,
     LoginComponent,
     HelpComponent,
-    ForgotpasswordComponent,
+    ForgotPasswordComponent,
     
     FooterComponent,
     SearchbyidComponent,
@@ -75,7 +88,14 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MemberComponent,
     ActivityComponent,
     FeedbackComponent,
-    SidenavComponent,
+  
+    VerifyidComponent,
+    PartnerpreferenceComponent,
+    ReportComponent,
+    PrivacysettingComponent,
+    ChangepasswordComponent,
+    HideprofileComponent,
+    DeleteComponent,
   
   ],
   imports: [
@@ -92,6 +112,14 @@ HttpClientModule,
      MatSelectModule,
      MatSidenavModule,
      NgbRatingModule,
+     MatToolbarModule,
+MatCardModule,
+MatListModule,
+MatIconModule,
+MatCheckboxModule,
+MatRadioModule,
+MatSlideToggleModule,
+ReactiveFormsModule
       ],
   providers: [],
   bootstrap: [AppComponent]

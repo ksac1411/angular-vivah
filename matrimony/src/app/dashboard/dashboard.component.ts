@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ShareService } from '../ShareService';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,22 +11,20 @@ export class DashboardComponent implements OnInit {
   userData: any;
   userId: number | undefined;
  
-  constructor(private route: ActivatedRoute, private router: Router) {}
-
+    constructor(private route: ActivatedRoute, private router: Router, private shareservice: ShareService) {}
+  
+  userID: String | undefined;
+  
   ngOnInit(): void {
+    
+    this.userID = this.shareservice.getUserId();
 
     this.route.queryParams.subscribe(params => {
-
       if (params['userData']) {
-
         this.userData = JSON.parse(params['userData']);
-
-        this.userId = this.userData.id; // Assuming the user ID is part of the userData object
-
+        this.userId = this.userData.id;
       }
-
     });
-
   }
   navigateToeditProfilePage() {
 

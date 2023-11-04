@@ -1,0 +1,59 @@
+/* Increase the height and width of the navbar */
+.navbar {
+  background-color: whitesmoke; /* Background color */
+  border: none; /* Remove border */
+  padding: 0; /* Remove padding to make the background width smaller */
+  width: 220px; /* Adjust the width of the navigation bar */
+  height: 100%; /* Set the height to 100% to cover the entire viewport */
+}
+
+/* ... (rest of your CSS styles) */
+
+/* Style the active link */
+.nav-link.active {
+  background-color: #6c757d;
+  color: darkblue; /* Active link text color */
+}
+
+/* Style the collapsed (mobile) navbar button icon */
+.navbar-toggler-icon {
+  background-color: #fff; /* Toggler icon color */
+}
+
+/* Style the navigation links */
+.nav-link {
+  color: darkblue; /* Link text color */
+  padding: 0.5rem 1rem; /* Link padding */
+  transition: background-color 0.3s;
+  font-weight: bold; /* Smooth background color transition */
+}
+
+/* On hover, change the background color of links */
+.nav-link:hover {
+  background-color: lightblue; /* Hover background color */
+  color: darkred; /* Hover link text color */
+}
+
+/* Center the text in the links (optional) */
+.nav-link {
+  text-align: left;
+  font-size: larger;
+}
+
+/* Remove the bullet points from the list items */
+.navbar-nav {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: -10px; /* Adjust the margin to move the items up */
+}
+
+/* Add some space between the list items (optional) */
+.nav-item {
+  margin-bottom: 50px;
+}
+
+/* Center the navbar content horizontally */
+.container {
+  display: flex;
+  justify-content: center;
+}

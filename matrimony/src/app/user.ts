@@ -2,14 +2,15 @@ export class User {
     // Basic Information
     id:any;
   //   profileType: any;
+  age:any;
     username: any;
-    
+    profilephoto:any;
     email: any;
     phoneNumber: any;
   //   password: any;
   //   confirmPassword: any;
   //   otp: any;
-    userid: any;
+    userId: any;
   //   rememberMe = false;
   // emailOrphoneNumber:any;
  countryCode:any;
@@ -67,6 +68,6 @@ name:any
   bodyType:any;
   faceCut:any;
   profileHandleBy:any; 
-  
+  disability:any;
   }
   

@@ -1,0 +1,118 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Looks like this is goodbye</h5>
+            <p class="card-text">Before you go, help us understand why you've decided to delete your account permanently.</p>
+            <form (ngSubmit)="onSubmit()">
+                
+                <div class="mb-3">
+                    <label for="reason" class="form-label" (click)="showifoundmmatch = !showifoundmmatch"> I Found My Match:</label>
+                    <ng-container *ngIf="showifoundmmatch">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="vivah" id="vivah">
+                  <label class="form-check-label" for="vivah">
+                    Through Vivah
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="other" id="other">
+                  <label class="form-check-label" for="other">
+                    Through Other Source
+                  </label>
+                </div>
+            </ng-container>
+
+                <div class="mb-3">
+                    <label for="reason" class="form-label" (click)="showNotSatisfied = !showNotSatisfied">Not satisfied with service:</label>
+                    <ng-container *ngIf="showNotSatisfied">
+                <!-- <div class="mb-3">
+                  <label for="reason" class="form-label">Not satisfied with service:</label>
+                  Rest of the checkboxes for the reasons -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="irrelevantMatches" id="irrelevantMatches">
+                    <label class="form-check-label" for="irrelevantMatches">
+                      Irrelevant matches
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="repeatedMatches" id="repeatedMatches">
+                    <label class="form-check-label" for="repeatedMatches">
+                      Repeated matches
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="fewMatchesResponses" id="fewMatchesResponses">
+                    <label class="form-check-label" for="fewMatchesResponses">
+                      Few matches/Responses
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="fakeProfiles" id="fakeProfiles">
+                    <label class="form-check-label" for="fakeProfiles">
+                      Fake Profiles
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="expensiveMembership" id="expensiveMembership">
+                    <label class="form-check-label" for="expensiveMembership">
+                      Membership plans are too expensive
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="technicalIssues" id="technicalIssues">
+                    <label class="form-check-label" for="technicalIssues">
+                      Technical Issues
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="privacyIssues" id="privacyIssues">
+                    <label class="form-check-label" for="privacyIssues">
+                      Privacy Issues
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="appNotifications" id="appNotifications">
+                    <label class="form-check-label" for="appNotifications">
+                      Too many app notifications
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="emailsAndCalls" id="emailsAndCalls">
+                    <label class="form-check-label" for="emailsAndCalls">
+                      Too many emails and calls
+                    </label>
+                  </div>
+                    </ng-container>
+
+                    <div class="mb-3">
+                        <label for="reason" class="form-label" (click)="showPraivacyissues = !showPraivacyissues">Profile/Privacy Issues:</label>
+                        <ng-container *ngIf="showPraivacyissues">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="privacyIssues" id="privacyIssues1">
+                    <label class="form-check-label" for="privacyIssues1">
+                      Facing Privacy Issues
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="profileChanges" id="profileChanges">
+                    <label class="form-check-label" for="profileChanges">
+                      I have to do some changes in my profile
+                    </label>
+                  </div>
+                </ng-container>
+                <div class="mb-3">
+                    <label for="reason" class="form-label" (click)="showOthers = !showOthers">Other Issues:</label>
+                    <ng-container *ngIf="showOthers">
+                
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="otherReason" id="otherReason">
+                    <label class="form-check-label" for="otherReason">
+                      Some other reason
+                    </label>
+                  </div>
+                    </ng-container>
+  
+                <button type="submit" class="btn btn-primary">Continue Deleting</button>
+                </div>
