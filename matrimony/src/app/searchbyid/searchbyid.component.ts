@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { User } from '../user';
 import { UserserviceService } from '../userservice.service';
+import { ShareService } from '../ShareService';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { UserserviceService } from '../userservice.service';
 export class SearchbyidComponent{
 
 
-  constructor(private userserviceService: UserserviceService) {} 
+  constructor(private userserviceService: UserserviceService, private shareservice: ShareService) {} 
+  userid=this.shareservice.getUserId();
 
   userId:any;  // Define a variable to store the user ID
   user: any; // Define a variable to store the user data
@@ -22,18 +24,9 @@ export class SearchbyidComponent{
       this.user = data;
     });
   }
+  
+
+  onSearch() {
+    this.fetchUser();
+  }
 }
-
-
-
-
-
-
-
-
- // Create a method to fetch user data
-//   fetchUser() {
-//     this.userserviceService.getUserById(this.userId).subscribe((data: any) => {
-//       this.user = data;
-//     });
-// }}

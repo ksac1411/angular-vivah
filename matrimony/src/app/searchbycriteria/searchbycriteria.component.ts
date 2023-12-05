@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { User } from '../user';
 import { UserserviceService } from '../userservice.service'; // Adjust the path to the service as needed
 import { NgForm } from '@angular/forms';
+import { ShareService } from '../ShareService';
 
 @Component({
   selector: 'app-searchbycriteria',
@@ -30,8 +31,10 @@ searchResults: User[] = [];
   }
   ageOptions: number[] = [];
   heightOptions: string[] = [];
-  
-  constructor(private userserviceService: UserserviceService) {
+  userid=this.shareservice.getUserId();
+
+  constructor(private userserviceService: UserserviceService, private shareservice: ShareService) {
+
     for (let age = 18; age <= 70; age++) {
       this.ageOptions.push(age);
     }
@@ -42,6 +45,8 @@ searchResults: User[] = [];
       }
     }
   }
+  // userid=this.shareservice.getUserId();
+
   selectedProfilePhoto: File | null = null;
 
   // Function to handle file selection
@@ -55,21 +60,20 @@ searchResults: User[] = [];
   //   this.SearchCriteria = User;
   // }
   search() {
-    console.log('Search Criteria:', this.user); // Log the search criteria
-  
+    console.log('Search Criteria:', this.user);
+
     this.userserviceService.search(this.user).subscribe(
       (results) => {
         this.searchResults = results;
-        console.log('Search Results:', results); // Log the search results
+        console.log('Search Results:', results);
       },
       (error) => {
         console.error('Error:', error);
       }
     );
   }
-  
 }
-
+  
   // Function to handle form submission
   // onSubmitSearch(searchForm: any) {
   //   if (searchForm.valid) {

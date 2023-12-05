@@ -24,7 +24,7 @@
        
       <div class="mb-3">
           <label for="mother_tongue" class="form-label">Mother Tongue:</label>
-          <select id="mother_tongue" name="mother_tongue" class="form-control" [(ngModel)]="user.mother_tongue" required>
+          <select id="mother_tongue" name="mother_tongue" class="form-control" [(ngModel)]="user.motherTongue" required>
             <option value="">- Select Mother Tongue -</option>
             <option value="Hindi">Hindi</option>
             <option value="English">English</option>
@@ -71,7 +71,7 @@
         </div>
         <div class="mb-3">
           <label for="marital_status" class="form-label">Marital Status:</label>
-          <select id="marital_status" name="marital_status" class="form-control" [(ngModel)]="user.marital_status" required>
+          <select id="marital_status" name="marital_status" class="form-control" [(ngModel)]="user.maritalStatus" required>
             <option value="">- Select -</option>
             <option value="single">Single</option>
             <option value="divorced">Divorced</option>]
@@ -128,7 +128,7 @@
           </select>
           </div>
           <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" id="manglik_status" name="manglik_status" value="manglik" [(ngModel)]="user.manglik_status">
+            <input type="checkbox" class="form-check-input" id="manglik_status" name="manglik_status" value="manglik" [(ngModel)]="user.manglikStatus">
             <label class="form-check-label" for="manglik_status">Manglik Status</label>
           </div>
 
@@ -245,7 +245,7 @@
         
         <div class="mb-3">
           <label for="income" class="form-label">Income:</label>
-          <select id="income" name="income" class="form-control" [(ngModel)]="user.income" required>
+          <select id="income" name="income" class="form-control" [(ngModel)]="user.incomeRange" required>
             <option value="">- Select Income -</option>
             <option value="Less than 25000">Less than 25000</option>
             <option value="Less than 50000">Less than 50000</option>
@@ -261,7 +261,7 @@
       </div>
       <div class="mb-3">
         <label for="settlingAbroad" class="form-label">Interested in Settling Abroad:</label>
-        <select class="form-select" id="settlingAbroad" name="settlingAbroad" [(ngModel)]="user.settlingAbroad" required>
+        <select class="form-select" id="settlingAbroad" name="settlingAbroad" [(ngModel)]="user.isInterestedInSettlingAbroad" required>
           <option value="">- Select Option -</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>
@@ -298,15 +298,28 @@
       </div>
       
   
-      <div class="mb-3">
-        <label for="drink" class="form-label">Drink:</label>
-        <select id="drink" name="drink" class="form-control" [(ngModel)]="user.drink" required>
-          <option value="">- Select -</option>
-          <option value="non-drinker">Non-drinker</option>
-          <option value="occasionally">Occasionally</option>
-          <option value="regularly">Regularly</option>
-        </select>
-      </div>
+  <!-- Habits Dropdown -->
+<div class="mb-3">
+  <label for="habits" class="form-label">Habits:</label>
+  <select id="habits" name="habits" class="form-control" [(ngModel)]="user.habits" required>
+    <option value="">- Select -</option>
+    <option value="non-smoker">Non-Smoker</option>
+    <option value="occasionally">Occasionally</option>
+    <option value="regularly">Regularly</option>
+  </select>
+</div>
+
+<!-- Drink Dropdown -->
+<div class="mb-3">
+  <label for="drink" class="form-label">Drink:</label>
+  <select id="drink" name="drink" class="form-control" [(ngModel)]="user.drink" required>
+    <option value="">- Select -</option>
+    <option value="non-drinker">Non-Drinker</option>
+    <option value="occasionally">Occasionally</option>
+    <option value="regularly">Regularly</option>
+  </select>
+</div>
+
 
       <div class="mb-3">
         <label for="diet" class="form-label">Diet:</label>
@@ -371,7 +384,7 @@
 
   <div class="mb-3">
     <label for="familyType" class="form-label">Family Type:</label>
-    <select class="form-select" id="familyType" [(ngModel)]="user.familyType" name="familyType">
+    <select class="form-select" id="familyType" [(ngModel)]="user.familyBackground" name="familyType">
       <option value="">Any</option>
       <option value="Nuclear">Nuclear Family</option>
       <option value="Joint">Joint Family</option>
@@ -387,7 +400,7 @@
 
   <div class="mb-3">
     <label for="caste" class="form-label">Caste:</label>
-    <select class="form-select" id="caste" name="caste" [(ngModel)]="user.caste" required>
+    <select class="form-select" id="caste" name="caste" [(ngModel)]="user.casteGroup" required>
       <option value="">- Select Caste -</option>
       <option value="Caste Option 1">Caste Option 1</option>
       <option value="Caste Option 2">Caste Option 2</option>

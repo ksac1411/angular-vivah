@@ -12,6 +12,7 @@ import { PhonebookItem } from './phonebookitems';
   providedIn: 'root'
 })
 export class UserserviceService {
+  private loggedInUser: any; // Store logged-in user details here
 
   userId: any;
   
@@ -20,7 +21,8 @@ export class UserserviceService {
   userservice: any;
 
   constructor(private http: HttpClient) { }
-  setUserId(userId: any): void {
+  
+  setUserId(userId: any) {
     this.userId = userId;
   }
 
@@ -71,13 +73,20 @@ sentOtp(logindata: Logindata): Observable<any> {
       })
     );
 }
-  
-  
 
-  search(searchCriteria: User): Observable<User[]> {
-    // Send the search criteria as JSON in the request body
-    return this.http.post<User[]>(`${this.apiUrl}/search`, searchCriteria);
-  }
+
+  
+//  search (searchCriteria: User): Observable<User[]> {
+//     return this.http.post<User[]>(`${this.apiUrl}/search`, searchCriteria);
+//   }
+search(searchCriteria: User): Observable<User[]> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  return this.http.post<User[]>(`${this.apiUrl}/search`, searchCriteria, { headers });
+}
+
 
   // getUserById(userId: number): Observable<any> {
   //   return this.http.get(`${this.apiUrl}/getUser?id=${userId}`);
@@ -119,10 +128,14 @@ sentOtp(logindata: Logindata): Observable<any> {
   //   return this.http.get(url);
 
   // }
-  updateUser(user: User): Observable<User> {
-    const url = `${this.apiUrl}/updateUser`;
-    return this.http.post<User>(url, user);
-  }
+// updateUser(user: User): Observable<User> {
+//     const url = `${this.apiUrl}/updateUser`;
+//     return this.http.post<User>(url, user);
+//   }
+updateUser( user: User): Observable<User> {
+  const url = `${this.apiUrl}/updateUser`;
+  return this.http.post<User>(url, user);
+}
   deleteUser(id: number): Observable<string> {
     const url = `${this.apiUrl}/deleteUser?Id=${id}`;
     return this.http.delete<string>(url);
@@ -174,17 +187,7 @@ getDeclinedUsersList(userId: string): Observable<User[]> {
 }
  
 
-// getAcceptedMembers(userid: number): Observable<User[]> {
-//   const params = new HttpParams().set('userId', userid.toString());
 
-//   return this.http.post<User[]>(`${this.apiUrl}/accepteList`, null, { params });
-// }
-
-// getDeclinedMembers(userId: number): Observable<User[]> {
-//   const params = new HttpParams().set('userId', userId.toString());
-
-//   return this.http.post<User[]>(`${this.apiUrl}/declineList`, null, { params });
-// }
 
 getBlockedUsersList(userId: string): Observable<User[]> {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -220,15 +223,15 @@ getSendUsersList(userId: string): Observable<User[]> {
 send(userId: string, sendMem: string): Observable<any> {
   return this.http.post<any>(`${this.apiUrl}/send`, { userId, send_mem: sendMem });
 }
-getRecentlyJoinedUsers(): Observable<Object[]> {
-  return this.http.get<Object[]>(`${this.apiUrl}/recently-joined`);
+getRecentlyJoinedUsers(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/recently-joined`);
 }
-
 getPhonebookList(userId: string): Observable<any> {
   const url = `${this.apiUrl}/phonebookid`;
-  let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-  return this.http.post(url, { userId }, { headers });
+  const options = {
+    params: new HttpParams().set('userId', userId)
+  };
+  return this.http.post(url, null, options);
 }
 
 
@@ -242,8 +245,12 @@ getPhonebookList(userId: string): Observable<any> {
 
 
 
-
-
+sortUsersByIds(idList: number[]): Observable<User[]> {
+  return this.http.post<User[]>(this.apiUrl, idList);
+}
+getUsersByIds(idList: number[]): Observable<User[]> {
+  return this.http.post<User[]>(`${this.apiUrl}/sortby`, idList);
+}
 
 
 }

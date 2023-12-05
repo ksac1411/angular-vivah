@@ -52,11 +52,11 @@
 <div *ngIf="userList.length > 0; ">
   <div class="card-container">
     <div class="card" *ngFor="let user of userList">
-      <img [src]="user.profilephoto" alt="User Profile" class="profile-img">
+      <img [src]="user.profilePhoto" alt="User Profile" class="profile-img">
       <div class="card-body">
         <h5 class="card-title">{{ user.username }}</h5>
         <p class="card-text">{{ user.city }}</p>
-        <p class="card-text">{{ user.income }}</p>
+        <p class="card-text">{{ user.incomeRange }}</p>
         <p class="card-text">{{ user.age }}</p>
         <p class="card-text">{{ user.occupation }}</p>
         <p class="card-text">{{ user.state }}</p>
